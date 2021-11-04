@@ -1,6 +1,25 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
 
 export default function Register(props) {
+    const Stylebutton = styled.button`
+    background-color: red;
+    color: white;
+    padding: 5px;
+    margin: 2px;
+    border: none;
+
+    `;
+    const StyleRegisterContainer = styled.div`
+    width: 600px;
+    &:hover{
+        box-shadow: 0px 0px 5px grey;
+    }
+    @media (min-width:0px) and (max-width:600px)
+    {
+        width: 300px;
+    }
+    `;
     let btnText,textBox;
     let btnClasses = ["btn","btn-md","m-1"];
     if (props.password === true) {
@@ -14,7 +33,8 @@ export default function Register(props) {
         btnClasses.push("btn-success");
     }
     return (
-        <div className="container card p-3 m-2 register-container ">
+        <StyleRegisterContainer className="container card p-3 m-2 ">
+            <h1 className="text-center">Registeration Form </h1>
             <form onSubmit={props.submit}>
                 <div className="form-group">
                     <label htmlFor="name">Name:</label>
@@ -30,7 +50,8 @@ export default function Register(props) {
                 </div>
                 <button type="submit" className="btn btn-primary btn-md m-1">Register</button>
                 <button type="button" className={btnClasses.join(" ")} onClick={props.showpasswordHandler} >{btnText}</button>
+                <Stylebutton type="button" color="black">Login Here!</Stylebutton>
             </form>
-        </div>
+        </StyleRegisterContainer>
     )
 }
